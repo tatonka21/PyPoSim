@@ -16,8 +16,8 @@ def subscribe_async():
         producer = KafkaProducer(bootstrap_servers=server + ":" + port)
         stream.subscribe(lambda x: producer.send(topic, str(x)))
     except Exception as e:
-        logger.error("could not connect to kafka broker because of error:" + str(e))
-        logger.error("retry in " + str(retry_wait_time) + " seconds")
+        logger.error("could not connect to kafka broker because of error:%s", str(e))
+        logger.error("retry in %s seconds", str(retry_wait_time))
         sleep(retry_wait_time)
         subscribe()
 
