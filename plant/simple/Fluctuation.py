@@ -1,4 +1,4 @@
-import random
+import secrets
 
 
 class Fluctuation:
@@ -16,7 +16,7 @@ class Fluctuation:
     def generate(self, baseline):
         relative_value = self.get_relative_value(baseline)
         corridor = (-relative_value, relative_value)
-        return random.randint(corridor[0], corridor[1])
+        return secrets.SystemRandom().randint(corridor[0], corridor[1])
 
     def get_relative_value(self, baseline):
         relative_value = float(baseline) / 100.0 * float(self.percentage)
